@@ -6,5 +6,6 @@ vim .git-credentials
 git config --global credential.helper store
 此时.gitconfig会多出helper=store
 ```
-linux 配置
-linux 理解
+
+#### linux 配置
+#### linux 理解
