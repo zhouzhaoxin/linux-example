@@ -1,4 +1,4 @@
-# main函数是如何执行的
+## main函数是如何执行的
 main 函数的原型为：
 ```
 int main(int argc, char *argv[])
@@ -6,3 +6,16 @@ int main(int argc, char *argv[])
 argc是命令行参数的数量，argv是命令行参数数组的指针
 
 内核通过`exec`函数执行`C`程序，这个函数会从内核中获取参数传给`main`函数
+
+## 进程终止
+有八种方法可以终止进程
+1. 从`main`函数返回
+2. 调用`exit`方法
+3. 调用`_exit`或者`_Exit`方法
+4. 最后一个线程从启动程序返回
+5. 最有一个线程调用`pthread_exit`方法
+
+6. 调用`abort`
+7. 接到信号
+8. 最后一个线程接受了取消请求
+
