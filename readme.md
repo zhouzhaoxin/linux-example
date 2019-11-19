@@ -7,8 +7,7 @@ git config --global credential.helper store
 此时.gitconfig会多出helper=store
 ```
 
-#### linux 配置
-#### linux 理解
+#### linux 进程 
 `c`语言程序由内核调用`exec`函数执行，这个函数可以从内核中获取需要执行的`main`函数参数数量以及参数地址列表,`main`函数的原型如下：
 ```
 int main(int argc, char *argv[])
@@ -28,7 +27,16 @@ int main(int argc, char *argv[])
 1. 调用以上三种终止进程的函数时选择不传递终止号码参数
 2. `main`函数执行后，没有给返回值
 3. `main`函数没有声明返回值为`int`
-注意：如果`main`函数声明了返回值但是没有正确返回，终止号码为`0`，在`main`方法中调用`exit(0);`和`return(0);`是一样的
+注意：
+- 如果`main`函数声明了返回值但是没有正确返回，终止号码为`0`
+- 在`main`方法中调用`exit(0);`和`return(0);`是一样的
+- ISO C标准下当`exit`被调用时，进程至少可以注册32个监听方法名叫`atexit`
+    ```
+    #include<stdlib.h>
+    // 通过此函数注册的监听方法会被逆序调用
+    int atexit(void (*func)(void))
+    ```
+
 
 
 
